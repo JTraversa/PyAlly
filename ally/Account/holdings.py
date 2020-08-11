@@ -69,7 +69,8 @@ class Holdings ( AccountEndpoint ):
 		"""Extract certain fields from response
 		"""
 		response = response.json()['response']
-		holdings = response['accountholdings']['holding']
+		if not isinstance(holdings, list):
+		holdings = [holdings]**
 
 		return list( map( Holdings._flatten_holding, holdings ) )
 
